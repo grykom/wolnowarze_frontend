@@ -13,8 +13,9 @@ function NoIdeaReceipes(){
                                     <hr class="divider light my-4" />
                                     <p class="text-white-50 mb-4">Spóbuj poniższych przepisów!</p>
                                     { ready ?
-                                        data.map((item, idx) => <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">{item.name}</a>):
-                                        <h2>ładowanie...</h2>}
+                                        data.map(item => <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">{item.name}</a>):
+                                        <h2>ładowanie danych...</h2>
+                                    }
                                 </div>
                             </div>
                         </div>

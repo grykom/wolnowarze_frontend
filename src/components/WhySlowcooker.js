@@ -12,7 +12,7 @@ function WhySlowcooker(){
                             <div className="row">
                                 {ready ?
                                     data.map((item, idx) => <ConsItem key={idx} item={item} />) :
-                                    <h2>Loading...</h2> 
+                                    <h2>ładowanie danych...</h2> 
                                 }
                             </div>
                         </div>

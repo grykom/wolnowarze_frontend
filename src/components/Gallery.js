@@ -1,7 +1,6 @@
 import DataFetcher from "./DataFetcher"
 
 function GalleryItem(props) {
-    console.log(props.data.images[0])
     return (
         <div className="col-lg-4 col-sm-6">
             <a className="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg"
@@ -15,8 +14,6 @@ function GalleryItem(props) {
 }
 
 function Gallery(){  
-    //const gallery_items = apiGallery.filter(item => item.images[0]).map(item => <GalleryItem key={item.id} data={item}/>)
-
     return (  
         <DataFetcher url='http://127.0.0.1:8000/v1/gallery/'>      
             {( data, ready ) => {                
@@ -27,7 +24,8 @@ function Gallery(){
                                 {ready ?
                                     data.filter(item => item.images[0]).map(item => <GalleryItem key={item.id} data={item}/>)
                                     : 
-                                    <h2>Loading...</h2>}  
+                                    <h2>ładowanie danych...</h2>
+                                }  
                             </div>
                         </div>
                     </section>                
