@@ -5,6 +5,7 @@ import Masthead from './components/Masthead';
 import WhySlowcooker from './components/WhySlowcooker';
 import Gallery from './components/Gallery';
 import NoIdeaReceipes from './components/NoIdeaReceipes';
+import Footer from './components/Footer';
 import { useState, useEffect } from "react";
 
 function SingleApi(props) {
@@ -37,7 +38,7 @@ function App() {
       <WhySlowcooker />
       <NoIdeaReceipes />
       <Gallery />
-      
+      <Footer />
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
