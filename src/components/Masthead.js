@@ -1,24 +1,67 @@
 import { useState } from "react";
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+function SingleItem(props) {
+  return (
+    <div class="card h-100 mb-2">
+      <img className="img-fluid" src={props.item.images[0]} alt="" />
+        <div class="card-body">
+          <h4 class="card-title">{props.item.name}</h4>
+          <div class="flex-row justify-content-between d-flex">
+            <p class="card-text">Liczba porcji: {props.item.serving_size}</p>
+            <p class="card-text">Czas przygotowania: {props.item.preparing_time}</p>
+          </div>
+        </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-primary">Sprawdź przepis</a>
+      </div>
+    </div>
+  )
+}
 
 function Masthead() {
   const [search, setSearch] = useState("")
-  const [receipes, setReceipes] = useState([])
+  const [receipes, setReceipes] = useState()
+  const [receipesReady, setReceipesReady] = useState(false)
+  const [modalIsOpen, setIsOpen] = useState(false);
+
  
-  function FormPost(e){
+  function closeModal() {
+    setIsOpen(false);
+  }
+ 
+  function formPost(e){
     e.preventDefault();
     const url = `http://127.0.0.1:8000/v1/receipes/?search=${search}`;
 
     fetch(url)
     .then(res => res.json())
     .then(data => {
-      console.log(data.results)
-      setReceipes(data.results);
+      if(data.count){
+        setReceipes(data.results);
+      }else{
+        setReceipes(false)
+      }
+      
+      setReceipesReady(true);
     })
+    setIsOpen(true);
   }
   function Typing(e){
     setSearch(e.target.value)
   }
-
+  console.log(search.length)
   return (
       <header className="masthead">
 
@@ -30,22 +73,34 @@ function Masthead() {
                   <hr className="divider my-4" />
               </div>
               <div className="col-lg-8 align-self-baseline">
-                        <form onSubmit={FormPost}>
-                          <div className="form-row">
-                            <div className="col-12 col-md-9 mb-2 mb-md-0">
-                              <input type="text" onChange={Typing} value={search} className="form-control form-control-lg" placeholder="szukaj potrawę..." />
-                            </div>
-                            <div className="col-12 col-md-3">
-                              <button type="submit" className="btn btn-block btn-lg btn-primary">Szukaj!</button>
-                            </div>
-                          </div>
-                        </form>
-                  
-                  <p className="text-white-75 font-weight-light mt-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
-                  <a className="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+                <form onSubmit={formPost}>
+                  <div className="form-row">
+                    <div className="col-12 col-md-9 mb-2 mb-md-0">
+                      <input type="text" required minlength="3" onChange={Typing} value={search} className="form-control form-control-lg" placeholder="szukaj potrawę..." />
+                    </div>
+                    <div className="col-12 col-md-3">
+                      <button type="submit" className="btn btn-block btn-lg btn-primary">Szukaj!</button>
+                    </div>
+                  </div>
+                </form>    
+                              
+                <p className="text-white-75 font-weight-light mt-5">{search.length < 3 & search.length !== 0 ? "wpisz minimum 3 znaki :)" : ""}</p>
               </div>
           </div>
       </div>
+      {receipesReady &&
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+      >
+        <button class="btn btn-secondary float-right btn-block mb-3" onClick={closeModal}>zamknij okno</button>
+        {receipes?
+          receipes.map(item => <SingleItem item={item}/>):
+          <button class="btn btn-default btn-block">Brak przepisów</button>
+        }
+      </Modal>
+    }
   </header>
   )
 }
