@@ -52,8 +52,7 @@ function Masthead() {
         setReceipes(data.results);
       }else{
         setReceipes(false)
-      }
-      
+      }      
       setReceipesReady(true);
     })
     setIsOpen(true);
