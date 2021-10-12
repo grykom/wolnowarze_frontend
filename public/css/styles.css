@@ -10698,3 +10698,11 @@ header.mastpodstrona h1 {
   width: 3rem;
   height: 3rem;
 }
+.img-search {
+  max-height: 300px;
+  max-width: 100%;
+  object-fit: cover;
+}
+.img-cover {
+  object-fit: cover;
+}

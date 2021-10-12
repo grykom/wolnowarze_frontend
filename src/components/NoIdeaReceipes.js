@@ -1,4 +1,6 @@
 import DataFetcher from "./DataFetcher";
+import { Link } from "react-router-dom";
+
 
 function NoIdeaReceipes(){
     return (
@@ -13,7 +15,7 @@ function NoIdeaReceipes(){
                                     <hr class="divider light my-4" />
                                     <p class="text-white-50 mb-4">Spóbuj poniższych przepisów!</p>
                                     { ready ?
-                                        data.map(item => <a class="btn btn-light btn-xl m-1" href="#services">{item.name}</a>):
+                                        data.map(item => <Link className="btn btn-light btn-xl m-1" to={`/przepis/${item.receipe_id}`}>{item.name}</Link>):
                                         <h2>ładowanie danych...</h2>
                                     }
                                 </div>

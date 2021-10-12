@@ -4,7 +4,7 @@ function GalleryItem(props) {
     return (
         <div className="col-lg-4 col-sm-6">
             <a className="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg"
-                ><img className="img-fluid" src={props.data.images[0]} alt="" />
+                ><img className="img-fluid img-cover" src={props.data.images[0]} alt="" />
                 <div className="portfolio-box-caption">
                     <div className="project-name">{props.data.name}</div>
                 </div>

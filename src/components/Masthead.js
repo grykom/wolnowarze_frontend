@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Modal from 'react-modal';
+import { Link } from "react-router-dom";
+
 
 const customStyles = {
   content: {
@@ -14,10 +16,10 @@ const customStyles = {
 
 function SingleItem(props) {
   return (
-    <div class="card h-100 mb-2">
-      <img className="img-fluid" src={props.item.images[0]} alt="" />
+    <div class="card h-100 mb-4">
+      <img className="img-fluid img-search" src={props.item.images[0]} alt="" />
         <div class="card-body">
-          <h4 class="card-title">{props.item.name}</h4>
+          <h4 class="card-title"><Link to={`/przepis/${props.item.receipe_id}`}>{props.item.name}</Link></h4>
           <div class="flex-row justify-content-between d-flex">
             <p class="card-text">Liczba porcji: {props.item.serving_size}</p>
             <p class="card-text">Czas przygotowania: {props.item.preparing_time}</p>
@@ -60,10 +62,8 @@ function Masthead() {
   function Typing(e){
     setSearch(e.target.value)
   }
-  console.log(search.length)
   return (
       <header className="masthead">
-
       <div className="container h-100">
           <div className="row h-100 align-items-center justify-content-center text-center">
               <div className="col-lg-10 align-self-end">
@@ -95,7 +95,7 @@ function Masthead() {
       >
         <button class="btn btn-secondary float-right btn-block mb-3" onClick={closeModal}>zamknij okno</button>
         {receipes?
-          receipes.map(item => <SingleItem item={item}/>):
+          receipes.map((item, idx) => <SingleItem key={idx} item={item} />):
           <button class="btn btn-default btn-block">Brak przepisów</button>
         }
       </Modal>
