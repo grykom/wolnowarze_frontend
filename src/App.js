@@ -17,7 +17,7 @@ function App() {
         <NoIdeaReceipes />
         <Gallery />
         <Footer />
-            <Route path="/przepis/:id">
+            <Route path="/przepis/:receipe_id">
               <ModalComponent />
             </Route>
       </Router>
