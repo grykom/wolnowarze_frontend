@@ -10703,6 +10703,11 @@ header.mastpodstrona h1 {
   max-width: 100%;
   object-fit: cover;
 }
+.img-receipe {
+  max-height: 500px;
+  max-width: 100%;
+  object-fit: cover;
+}
 .img-cover {
   object-fit: cover;
 }

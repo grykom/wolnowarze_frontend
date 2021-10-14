@@ -1,23 +1,30 @@
-import DataFetcher from "./DataFetcher";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
+import DataFetcher from "./DataFetcher";
+import API_DATA from "./_ApiData";
 
 function NoIdeaReceipes(){
+    const [reload, setReload] = useState(false)
+
     return (
-        <DataFetcher url='http://127.0.0.1:8000/v1/no_idea_receipes/'>
+        <DataFetcher url={API_DATA.NO_IDEA_RECEIPES} refresh={reload}>
             {( data, ready ) => {
                 return (
-                    <section class="page-section bg-primary" id="about">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8 text-center">
-                                    <h2 class="text-white mt-0">Nie masz pomysłu?</h2>
-                                    <hr class="divider light my-4" />
-                                    <p class="text-white-50 mb-4">Spóbuj poniższych przepisów!</p>
+                    <section className="page-section bg-primary" id="about">
+                        <div className="container">
+                            <div className="row justify-content-center">
+                                <div className="col-lg-8 text-center">
+                                    <h2 className="text-white mt-0">Nie masz pomysłu?</h2>
+                                    <hr className="divider light my-4" />
+                                    <p className="text-white-50 mb-4">Spóbuj poniższych przepisów!</p>
                                     { ready ?
-                                        data.map(item => <Link className="btn btn-light btn-xl m-1" to={`/przepis/${item.receipe_id}`}>{item.name}</Link>):
+                                        data.map((item, idx) => <Link key={idx} className="btn btn-light btn-xl m-1" to={`/przepis/${item.receipe_id}`}>{item.name}</Link>):
                                         <h2>ładowanie danych...</h2>
-                                    }
+                                    }   
+                                    <p><button className="btn btn-sm btn-default text-white" onClick={() => setReload(!reload)}>
+                                        losuj nowe <i className='fas text-white fa-sync ml-1'></i>
+                                    </button></p>
                                 </div>
                             </div>
                         </div>

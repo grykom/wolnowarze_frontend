@@ -1,8 +1,9 @@
 import DataFetcher from "./DataFetcher";
+import API_DATA from "./_ApiData";
 
 function WhySlowcooker(){  
     return (
-        <DataFetcher url='http://127.0.0.1:8000/v1/why_slowcooker/'>
+        <DataFetcher url={API_DATA.WHY_SLOWCOOKER}>
             {( data, ready ) => {
                 return (
                     <section className="page-section" id="services">

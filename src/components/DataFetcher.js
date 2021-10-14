@@ -11,7 +11,7 @@ function DataFetcher(props){
                 setApiData(data)
                 setDataReady(true)
             })
-    }, [props.url])
+    }, [props.url, props.refresh])
 
     return (
         props.children(apiData, dataReady)

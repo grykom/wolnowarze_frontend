@@ -4,7 +4,7 @@ import WhySlowcooker from './components/WhySlowcooker';
 import Gallery from './components/Gallery';
 import NoIdeaReceipes from './components/NoIdeaReceipes';
 import Footer from './components/Footer';
-import ModalComponent from './components/ModalComponent';
+import ReceipeModal from './components/ReceipeModal';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
@@ -17,17 +17,10 @@ function App() {
         <NoIdeaReceipes />
         <Gallery />
         <Footer />
-            <Route path="/przepis/:receipe_id">
-              <ModalComponent />
-            </Route>
+        <Route path="/przepis/:receipe_id">
+          <ReceipeModal />
+        </Route>
       </Router>
-    </div>
-  );
-}
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
     </div>
   );
 }
