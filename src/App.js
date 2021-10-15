@@ -17,11 +17,9 @@ function App() {
         <NoIdeaReceipes />
         <Gallery />
         <Footer />
-        <Route path="/przepis/:receipe_id">
-          <ReceipeModal />
-        </Route>
+        <Route path="/przepis/:receipe_id/:receipe_slug" component={ReceipeModal} />
       </Router>
     </div>
   );
 }
-export default App;
+export default App

@@ -23,15 +23,15 @@ function ReceipeModal() {
     let history = useHistory();
     let { receipe_id } = useParams();
     const [modalIsOpen, setIsOpen] = useState(true);
-    const [receipe, setReceipe] = useState()
+    const [receipe, setReceipe] = useState();
     const [receipeReady, setReceipeReady] = useState(false);
 
     useEffect(() => {
     fetch(API_DATA.SINGLE_RECEIPE + receipe_id)
         .then(res => res.json())
         .then(data => {
-            setReceipe(data)
-            setReceipeReady(true)
+            setReceipe(data);
+            setReceipeReady(true);
         })
     }, [receipe_id])
 
@@ -50,23 +50,23 @@ function ReceipeModal() {
             {receipeReady ?
                 <div className="card h-100">
                     <Carousel autoPlay={false} showStatus={false} showIndicators={false}>
-                        {receipe.images.map((image, idx) => <img className="img-fluid img-receipe" src={receipe.images[idx]} alt="{receipe.name}" />)}
+                        {receipe.images.map((image, idx) => <img key={idx} className="img-fluid img-receipe" src={receipe.images[idx]} alt="{receipe.name}" />)}
                     </Carousel>                    
                     <div className="card-body pt-0">
                         <h4 className="card-title text-primary">{receipe.name}</h4>
-                        <div className="flex-row justify-content-between d-flex mb-3">
-                            <p className="card-text">                                
+                        <div className="row mb-3">
+                            <p className="card-text col-12 col-lg-6">                                
                                 Czas na HIGH: {receipe.time_on_high}<br />
                                 Czas na LOW: {receipe.time_on_low}
                             </p>
-                            <p className="card-text">
+                            <p className="card-text col-12 col-lg-6 text-right">
                                 Liczba porcji: {receipe.serving_size}<br />
                                 Czas przygotowania: {receipe.preparing_time}                                
                             </p>
                         </div>
                         <div className="row">
-                            <p className="card-text col-4" dangerouslySetInnerHTML={{__html: '<h5 class="border-bottom">Składniki</h5>' + receipe.receipe_ingredients}}></p>
-                            <p className="card-text col-8" dangerouslySetInnerHTML={{__html: '<h5 class="border-bottom">Sposób przygotowania</h5>' + receipe.receipe_how_to}}></p>
+                            <p className="card-text col-12 col-lg-4" dangerouslySetInnerHTML={{__html: '<h5 class="border-bottom">Składniki</h5>' + receipe.receipe_ingredients}}></p>
+                            <p className="card-text col-12 col-lg-8" dangerouslySetInnerHTML={{__html: '<h5 class="border-bottom">Sposób przygotowania</h5>' + receipe.receipe_how_to}}></p>
                         </div>
                     </div>
                 </div>

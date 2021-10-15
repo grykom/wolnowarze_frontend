@@ -6,7 +6,7 @@ import API_DATA from "./_ApiData";
 function GalleryItem(props) {
     return (
         <div className="col-lg-4 col-sm-6">
-            <Link className="portfolio-box" to={`/przepis/${props.data.receipe_id}`}>
+            <Link className="portfolio-box" to={`/przepis/${props.data.receipe_id}/${props.data.slug}`}>
                 <img className="img-fluid img-cover" src={props.data.images[0]} alt="" />
                 <div className="portfolio-box-caption">
                     <div className="project-name">{props.data.name}</div>
@@ -37,4 +37,4 @@ function Gallery(){
         </DataFetcher>              
     )
 }
-export default Gallery;
+export default Gallery

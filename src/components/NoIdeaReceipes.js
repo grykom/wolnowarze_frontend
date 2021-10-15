@@ -5,7 +5,7 @@ import DataFetcher from "./DataFetcher";
 import API_DATA from "./_ApiData";
 
 function NoIdeaReceipes(){
-    const [reload, setReload] = useState(false)
+    const [reload, setReload] = useState(false);
 
     return (
         <DataFetcher url={API_DATA.NO_IDEA_RECEIPES} refresh={reload}>
@@ -19,7 +19,7 @@ function NoIdeaReceipes(){
                                     <hr className="divider light my-4" />
                                     <p className="text-white-50 mb-4">Spóbuj poniższych przepisów!</p>
                                     { ready ?
-                                        data.map((item, idx) => <Link key={idx} className="btn btn-light btn-xl m-1" to={`/przepis/${item.receipe_id}`}>{item.name}</Link>):
+                                        data.map((item, idx) => <Link key={idx} className="btn btn-light btn-xl m-1" to={`/przepis/${item.receipe_id}/${item.slug}`}>{item.name}</Link>):
                                         <h2>ładowanie danych...</h2>
                                     }   
                                     <p><button className="btn btn-sm btn-default text-white" onClick={() => setReload(!reload)}>

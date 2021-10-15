@@ -20,10 +20,10 @@ function SingleItem(props) {
     <div className="card h-100 mb-4">
         <img className="img-fluid img-search" src={props.item.images[0]} alt="" />
         <div className="card-body">
-            <h4 className="card-title text-primary"><Link to={`/przepis/${props.item.receipe_id}`}>{props.item.name}</Link></h4>
-            <div className="flex-row justify-content-between d-flex">
-                <p className="card-text">Liczba porcji: {props.item.serving_size}</p>
-                <p className="card-text">Czas przygotowania: {props.item.preparing_time}</p>
+            <h4 className="card-title text-primary"><Link to={`/przepis/${props.item.receipe_id}/${props.item.slug}`}>{props.item.name}</Link></h4>
+            <div className="row">
+                <p className="card-text col-12 col-lg-6">Liczba porcji: {props.item.serving_size}</p>
+                <p className="card-text col-12 col-lg-6 text-right">Czas przygotowania: {props.item.preparing_time}</p>
             </div>
         </div>
         <div className="card-footer">
@@ -34,9 +34,9 @@ function SingleItem(props) {
 }
 
 function Masthead() {
-    const [searchValue, setSearchValue] = useState("")
-    const [receipes, setReceipes] = useState()
-    const [receipesReady, setReceipesReady] = useState(false)
+    const [searchValue, setSearchValue] = useState("");
+    const [receipes, setReceipes] = useState();
+    const [receipesReady, setReceipesReady] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     function closeModal() {
@@ -51,7 +51,7 @@ function Masthead() {
             if(data.count) {
                 setReceipes(data.results);
             }else{
-                setReceipes(false)
+                setReceipes(false);
             }      
         setReceipesReady(true);
     })
@@ -59,7 +59,7 @@ function Masthead() {
     }
 
     function searchTyping(e){
-        setSearchValue(e.target.value)
+        setSearchValue(e.target.value);
     }
 
     return (
