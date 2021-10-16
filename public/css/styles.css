@@ -10709,7 +10709,27 @@ header.mastpodstrona h1 {
   object-fit: cover;
 }
 .img-cover {
-  min-height: 350px;
+  min-height: 500px;
   max-width: 100%;
   object-fit: cover;
+}
+.bordered {
+  border: 1px solid #f4623a;
+  border-radius: 5px;
+  margin: 15px 0;
+}
+.bordered > p {
+  margin-top: 5px;
+  margin-bottom: 7px;
+}
+.btn-default {
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+  margin: 10px;
+}
+.btn-default:hover {
+  color: #f4623a;
+  text-decoration: underline;
+}
+.btn-active {
+  box-shadow: 0 0 0 0.2rem rgb(255, 0, 0) !important;
 }
