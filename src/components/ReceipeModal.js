@@ -19,7 +19,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-function ReceipeModal() {
+function ReceipeModal(props) {
     let history = useHistory();
     let { receipe_id } = useParams();
     let likesStorage = JSON.parse(localStorage.getItem(`likes`));
@@ -42,7 +42,8 @@ function ReceipeModal() {
                 
                 const receipeObj = {
                     r_id: data.receipe_id,
-                    r_name: data.name
+                    r_name: data.name,
+                    r_slug: data.slug
                 }
                 setReceipeObj(receipeObj)          
             })
@@ -58,9 +59,10 @@ function ReceipeModal() {
     }
     function likeIt() {
         setLikesNum(likes => likes + 1);
-        setMeLike(true);
+        setMeLike(true);        
         likesStorage.push(receipeObj);
         localStorage.setItem(`likes`, JSON.stringify(likesStorage));
+        props.setLiked(likesStorage)
         fetch(API_DATA.SINGLE_RECEIPE + receipe_id + "?likes_counter=up");
     }
     function dislikeIt() {
@@ -68,6 +70,7 @@ function ReceipeModal() {
         setMeLike(false);
         likesStorage = likesStorage.filter(item => JSON.stringify(item) !== JSON.stringify(receipeObj));
         localStorage.setItem(`likes`, JSON.stringify(likesStorage));
+        props.setLiked(likesStorage)
         fetch(API_DATA.SINGLE_RECEIPE + receipe_id + "?likes_counter=down");
     }
 
