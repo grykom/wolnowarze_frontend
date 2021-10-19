@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Footer({ favs }){
+function Favs({ favs }){
     return (
         <>
             <section className="page-section" id="contact">
@@ -29,4 +29,4 @@ function Footer({ favs }){
     )
 }
 
-export default Footer
+export default Favs

@@ -11,7 +11,7 @@ function NoIdeaReceipes(){
         <DataFetcher url={API_DATA.NO_IDEA_RECEIPES} refresh={reload}>
             {( data, ready ) => {
                 return (
-                    <section className="page-section bg-primary" id="about">
+                    <section className="page-section bg-primary" id="NoIdeaReceipes">
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div className="col-lg-8 text-center">

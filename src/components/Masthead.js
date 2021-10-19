@@ -82,7 +82,8 @@ function Masthead() {
                     </div>
                     </div>
                 </form>    
-                                
+                <p class="text-white-75 font-weight-light mt-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#NoIdeaReceipes">Nie masz pomysłu?</a>                
                 <p className="text-white-75 font-weight-light mt-5">{searchValue.length < 3 & searchValue.length !== 0 ? "wpisz minimum 3 znaki :)" : ""}</p>
                 </div>
             </div>

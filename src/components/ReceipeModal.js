@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef  } from 'react';
+import React, { useRef  } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import Modal from 'react-modal';
 import ReactToPrint from "react-to-print";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-
-import API_DATA from "./_ApiData";
+import ReceipeHook from "../hooks/ReceipeHook.js";
 
 const customStyles = {
   content: {
@@ -25,84 +24,20 @@ function ReceipeModal({ setFavs }) {
     let { receipe_id } = useParams();
     let componentRef = useRef();
 
-    const [receipe, setReceipe] = useState();
-    const [receipeReady, setReceipeReady] = useState(false);
+    const {
+        modalIsOpen,
+        closeModal, 
+        receipe, 
+        receipeReady, 
+        likesNum, 
+        meLike, 
+        meFav, 
+        addLike, 
+        removeLike, 
+        addFav, 
+        removeFav
+    } = ReceipeHook(receipe_id, history, setFavs)
     
-    // storage things
-    const [receipeStorageObj, setReceipeStorageObj] = useState({})
-
-    // likes
-    let likesStorage = JSON.parse(localStorage.getItem(`likes`));
-    if (!likesStorage) likesStorage = []
-    const [likesNum, setLikesNum] = useState(0);
-    const [meLike, setMeLike] = useState(false);
-
-    // favorites
-    let favStorage = JSON.parse(localStorage.getItem('favs'));
-    if (!favStorage) favStorage = []  
-    const [meFav, setMeFav] = useState(false);
-
-    const [modalIsOpen, setIsOpen] = useState(true);
-    function closeModal() {
-        setIsOpen(false);
-        history.push('/');
-    }
-
-    useEffect(() => {
-        fetch(API_DATA.SINGLE_RECEIPE + receipe_id)
-            .then(res => res.json())
-            .then(data => {
-                setReceipe(data);
-                setReceipeReady(true);
-                setLikesNum(data.likes);
-                
-                const receipeObj = {
-                    r_id: data.receipe_id,
-                    r_name: data.name,
-                    r_slug: data.slug
-                }
-                setReceipeStorageObj(receipeObj)          
-            })
-    }, [receipe_id])
-
-    useEffect(() => {
-        likesStorage.filter(item => JSON.stringify(item) === JSON.stringify(receipeStorageObj)).length > 0 && setMeLike(true)
-    }, [likesStorage, receipeStorageObj])
-
-    function addLike() {        
-        setMeLike(true);        
-        likesStorage.push(receipeStorageObj);
-        localStorage.setItem(`likes`, JSON.stringify(likesStorage));
-        fetch(API_DATA.SINGLE_RECEIPE + receipe_id + API_DATA.LIKES_UP, {method: 'POST'})
-            .then(res => res.json())
-            .then(data => setLikesNum(data.likes))  
-    }
-    function removeLike() {        
-        setMeLike(false);
-        likesStorage = likesStorage.filter(item => JSON.stringify(item) !== JSON.stringify(receipeStorageObj));
-        localStorage.setItem(`likes`, JSON.stringify(likesStorage));
-        fetch(API_DATA.SINGLE_RECEIPE + receipe_id + API_DATA.LIKES_DOWN, {method: 'POST'})
-            .then(res => res.json())
-            .then(data => setLikesNum(data.likes))        
-    }
-
-    useEffect(() => {
-        favStorage.filter(item => JSON.stringify(item) === JSON.stringify(receipeStorageObj)).length > 0 && setMeFav(true)
-    }, [favStorage, receipeStorageObj])
-
-    function addFav() {
-        setMeFav(true);
-        favStorage.push(receipeStorageObj);
-        localStorage.setItem('favs', JSON.stringify(favStorage));
-        setFavs(favStorage);
-    }
-    function removeFav() {
-        setMeFav(false);
-        favStorage = favStorage.filter(item => JSON.stringify(item) !== JSON.stringify(receipeStorageObj));
-        localStorage.setItem('favs', JSON.stringify(favStorage));
-        setFavs(favStorage);
-    }
-
     return (
         <div>
             <Modal

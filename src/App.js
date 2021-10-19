@@ -4,7 +4,7 @@ import Masthead from './components/Masthead';
 import WhySlowcooker from './components/WhySlowcooker';
 import Gallery from './components/Gallery';
 import NoIdeaReceipes from './components/NoIdeaReceipes';
-import Footer from './components/Footer';
+import Favs from './components/Favs';
 import ReceipeModal from './components/ReceipeModal';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -19,7 +19,7 @@ function App() {
         <WhySlowcooker />
         <NoIdeaReceipes />
         <Gallery />
-        <Footer favs={favs} />
+        <Favs favs={favs} />
         <Route path="/przepis/:receipe_id/:receipe_slug">
           <ReceipeModal setFavs={setFavs} />
         </Route>

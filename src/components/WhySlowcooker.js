@@ -6,7 +6,7 @@ function WhySlowcooker(){
         <DataFetcher url={API_DATA.WHY_SLOWCOOKER}>
             {( data, ready ) => {
                 return (
-                    <section className="page-section" id="services">
+                    <section className="page-section" id="WhySlowcooker">
                         <div className="container">
                             <h2 className="text-center mt-0">Dlaczego wolnowar?</h2>
                             <hr className="divider my-4" />
