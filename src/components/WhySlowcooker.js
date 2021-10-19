@@ -24,13 +24,13 @@ function WhySlowcooker(){
     )
 }
 
-function ConsItem(props){
+function ConsItem({ item }){
     return (
         <div className="col-lg col-md-6 text-center">
             <div className="mt-5">
-                <i className={`fas fa-4x text-primary mb-4 ${props.item.icon}`}></i>
-                <h3 className="h4 mb-2">{props.item.heading}</h3>
-                <p className="text-muted mb-0">{props.item.paragraph}</p>
+                <i className={`fas fa-4x text-primary mb-4 ${item.icon}`}></i>
+                <h3 className="h4 mb-2">{item.heading}</h3>
+                <p className="text-muted mb-0">{item.paragraph}</p>
             </div>
         </div>
     )

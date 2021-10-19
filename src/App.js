@@ -9,7 +9,7 @@ import ReceipeModal from './components/ReceipeModal';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
-  const [liked, setLiked] = useState(JSON.parse(localStorage.getItem(`likes`)))
+  const [favs, setFavs] = useState(JSON.parse(localStorage.getItem(`favs`)))
 
   return (
     <div>
@@ -19,9 +19,9 @@ function App() {
         <WhySlowcooker />
         <NoIdeaReceipes />
         <Gallery />
-        <Footer liked={liked} />
+        <Footer favs={favs} />
         <Route path="/przepis/:receipe_id/:receipe_slug">
-          <ReceipeModal liked={liked} setLiked={setLiked} />
+          <ReceipeModal setFavs={setFavs} />
         </Route>
       </Router>
     </div>

@@ -15,19 +15,19 @@ const customStyles = {
     },
 };
 
-function SingleItem(props) {
+function SingleItem({ item }) {
     return (
     <div className="card h-100 mb-4">
-        <img className="img-fluid img-search" src={props.item.images[0]} alt="" />
+        <img className="img-fluid img-search" src={item.images[0]} alt="" />
         <div className="card-body">
-            <h4 className="card-title text-primary"><Link to={`/przepis/${props.item.receipe_id}/${props.item.slug}`}>{props.item.name}</Link></h4>
+            <h4 className="card-title text-primary"><Link to={`/przepis/${item.receipe_id}/${item.slug}`}>{item.name}</Link></h4>
             <div className="row">
-                <p className="card-text col-12 col-lg-6">Liczba porcji: {props.item.serving_size}</p>
-                <p className="card-text col-12 col-lg-6 text-right">Czas przygotowania: {props.item.preparing_time}</p>
+                <p className="card-text col-12 col-lg-6"><i className="fas text-primary fa-users mr-1"></i> Liczba porcji: {item.serving_size}</p>
+                <p className="card-text col-12 col-lg-6 text-right"><i className="far text-primary fa-clock mr-1"></i>Czas przygotowania: {item.preparing_time}</p>
             </div>
         </div>
         <div className="card-footer">
-        <Link to={`/przepis/${props.item.receipe_id}`} className="btn btn-primary">Sprawdź przepis</Link>
+            <Link to={`/przepis/${item.receipe_id}/${item.slug}`} className="btn btn-primary">Zobacz przepis</Link>
         </div>
     </div>
     )
@@ -96,7 +96,7 @@ function Masthead() {
         <button className="btn btn-secondary float-right btn-block mb-3" onClick={closeModal}>zamknij okno</button>
         {receipes?
             receipes.map((item, idx) => <SingleItem key={idx} item={item} />):
-            <button className="btn btn-default btn-block">Brak przepisów</button>
+            <button className="btn btn-block">Brak przepisów</button>
         }
         </Modal>
     }

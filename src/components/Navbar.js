@@ -7,9 +7,9 @@ function Navbar() {
                     <ul className="navbar-nav ml-auto my-2 my-lg-0">
 						<li className="nav-item"><a className="nav-link js-scroll-trigger" href="#page-top">Szukaj przepisu</a></li>
 						<li className="nav-item"><a className="nav-link js-scroll-trigger" href="#services">Dlaczego wolnowar?</a></li>
-                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#about">Przepisy</a></li>                        
-                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#portfolio">Najnowsze</a></li>
-                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#about">Losowe przepisy</a></li>                        
+                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#portfolio">Galeria</a></li>
+                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#contact">Twoje ulubione</a></li>
                     </ul>
                 </div>
             </div>
