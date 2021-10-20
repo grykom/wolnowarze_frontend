@@ -20,14 +20,14 @@ function SingleItem({ item }) {
     <div className="card h-100 mb-4">
         <img className="img-fluid img-search" src={item.images[0]} alt="" />
         <div className="card-body">
-            <h4 className="card-title text-primary"><Link to={`/przepis/${item.receipe_id}/${item.slug}`}>{item.name}</Link></h4>
+            <h4 className="card-title text-primary"><Link to={`/przepis/${item.recipe_id}/${item.slug}`}>{item.name}</Link></h4>
             <div className="row">
                 <p className="card-text col-12 col-lg-6"><i className="fas text-primary fa-users mr-1"></i> Liczba porcji: {item.serving_size}</p>
                 <p className="card-text col-12 col-lg-6 text-right"><i className="far text-primary fa-clock mr-1"></i>Czas przygotowania: {item.preparing_time}</p>
             </div>
         </div>
         <div className="card-footer">
-            <Link to={`/przepis/${item.receipe_id}/${item.slug}`} className="btn btn-primary">Zobacz przepis</Link>
+            <Link to={`/przepis/${item.recipe_id}/${item.slug}`} className="btn btn-primary">Zobacz przepis</Link>
         </div>
     </div>
     )
@@ -35,8 +35,8 @@ function SingleItem({ item }) {
 
 function Masthead() {
     const [searchValue, setSearchValue] = useState("");
-    const [receipes, setReceipes] = useState();
-    const [receipesReady, setReceipesReady] = useState(false);
+    const [recipes, setrecipes] = useState();
+    const [recipesReady, setrecipesReady] = useState(false);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     function closeModal() {
@@ -45,15 +45,15 @@ function Masthead() {
  
     function formPost(e){
     e.preventDefault();
-    fetch(API_DATA.RECEIPES_SEARCH + searchValue)
+    fetch(API_DATA.RECIPES_SEARCH + searchValue)
         .then(res => res.json())
         .then(data => {
             if(data.count) {
-                setReceipes(data.results);
+                setrecipes(data.results);
             }else{
-                setReceipes(false);
+                setrecipes(false);
             }      
-        setReceipesReady(true);
+        setrecipesReady(true);
     })
     setModalIsOpen(true);
     }
@@ -83,20 +83,20 @@ function Masthead() {
                     </div>
                 </form>    
                 <p class="text-white-75 font-weight-light mt-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#NoIdeaReceipes">Nie masz pomysłu?</a>                
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#NoIdearecipes">Nie masz pomysłu?</a>                
                 <p className="text-white-75 font-weight-light mt-5">{searchValue.length < 3 & searchValue.length !== 0 ? "wpisz minimum 3 znaki :)" : ""}</p>
                 </div>
             </div>
         </div>
-        {receipesReady &&
+        {recipesReady &&
         <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             style={customStyles}
         >
         <button className="btn btn-secondary float-right btn-block mb-3" onClick={closeModal}>zamknij okno</button>
-        {receipes?
-            receipes.map((item, idx) => <SingleItem key={idx} item={item} />):
+        {recipes?
+            recipes.map((item, idx) => <SingleItem key={idx} item={item} />):
             <button className="btn btn-block">Brak przepisów</button>
         }
         </Modal>

@@ -3,9 +3,9 @@ import Navbar from './components/Navbar';
 import Masthead from './components/Masthead';
 import WhySlowcooker from './components/WhySlowcooker';
 import Gallery from './components/Gallery';
-import NoIdeaReceipes from './components/NoIdeaReceipes';
+import NoIdeaRecipes from './components/NoIdeaRecipes';
 import Favs from './components/Favs';
-import ReceipeModal from './components/ReceipeModal';
+import RecipeModal from './components/RecipeModal';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
@@ -17,11 +17,11 @@ function App() {
         <Navbar />
         <Masthead />
         <WhySlowcooker />
-        <NoIdeaReceipes />
+        <NoIdeaRecipes />
         <Gallery />
         <Favs favs={favs} />
-        <Route path="/przepis/:receipe_id/:receipe_slug">
-          <ReceipeModal setFavs={setFavs} />
+        <Route path="/przepis/:recipe_id/:recipe_slug">
+          <RecipeModal setFavs={setFavs} />
         </Route>
       </Router>
     </div>

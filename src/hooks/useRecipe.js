@@ -1,12 +1,12 @@
 import { useState, useEffect  } from 'react';
 import API_DATA from "../components/_ApiData";
 
-function ReceipeHook(receipe_id, history, setFavs) {
-    const [receipe, setReceipe] = useState();
-    const [receipeReady, setReceipeReady] = useState(false);
+function useRecipe(recipe_id, history, setFavs) {
+    const [recipe, setrecipe] = useState();
+    const [recipeReady, setrecipeReady] = useState(false);
     
     // storage things
-    const [receipeStorageObj, setReceipeStorageObj] = useState({})
+    const [recipeStorageObj, setrecipeStorageObj] = useState({})
 
     // likes
     let likesStorage = JSON.parse(localStorage.getItem(`likes`));
@@ -27,53 +27,53 @@ function ReceipeHook(receipe_id, history, setFavs) {
     }
 
     useEffect(() => {
-        fetch(API_DATA.SINGLE_RECEIPE + receipe_id)
+        fetch(API_DATA.SINGLE_RECIPE + recipe_id)
             .then(res => res.json())
             .then(data => {
-                setReceipe(data);
-                setReceipeReady(true);
+                setrecipe(data);
+                setrecipeReady(true);
                 setLikesNum(data.likes);
                 
-                const receipeObj = {
-                    r_id: data.receipe_id,
+                const recipeObj = {
+                    r_id: data.recipe_id,
                     r_name: data.name,
                     r_slug: data.slug
                 }
-                setReceipeStorageObj(receipeObj)          
+                setrecipeStorageObj(recipeObj)          
             })
-    }, [receipe_id])
+    }, [recipe_id])
 
     // likes
     useEffect(() => {
-        likesStorage.filter(item => JSON.stringify(item) === JSON.stringify(receipeStorageObj)).length > 0 && setMeLike(true)
-    }, [likesStorage, receipeStorageObj])
+        likesStorage.filter(item => JSON.stringify(item) === JSON.stringify(recipeStorageObj)).length > 0 && setMeLike(true)
+    }, [likesStorage, recipeStorageObj])
 
     function _likeAction(action_boolean) {
         localStorage.setItem(`likes`, JSON.stringify(likesStorage));  
         setMeLike(action_boolean);
         let url = ''
         if(action_boolean){
-            url = API_DATA.SINGLE_RECEIPE + receipe_id + API_DATA.LIKES_UP
+            url = API_DATA.SINGLE_RECIPE + recipe_id + API_DATA.LIKES_UP
         }else {
-            url = API_DATA.SINGLE_RECEIPE + receipe_id + API_DATA.LIKES_DOWN
+            url = API_DATA.SINGLE_RECIPE + recipe_id + API_DATA.LIKES_DOWN
         }
         fetch(url, {method: 'POST'})
             .then(res => res.json())
             .then(data => setLikesNum(data.likes)) 
     }
     function addLike() {        
-        likesStorage.push(receipeStorageObj);        
+        likesStorage.push(recipeStorageObj);        
         _likeAction(true);
     }
     function removeLike() {   
-        likesStorage = likesStorage.filter(item => JSON.stringify(item) !== JSON.stringify(receipeStorageObj));
+        likesStorage = likesStorage.filter(item => JSON.stringify(item) !== JSON.stringify(recipeStorageObj));
         _likeAction(false); 
     }
 
     // favorites
     useEffect(() => {
-        favStorage.filter(item => JSON.stringify(item) === JSON.stringify(receipeStorageObj)).length > 0 && setMeFav(true)
-    }, [favStorage, receipeStorageObj])
+        favStorage.filter(item => JSON.stringify(item) === JSON.stringify(recipeStorageObj)).length > 0 && setMeFav(true)
+    }, [favStorage, recipeStorageObj])
 
     function _favAction(action_boolean){
         setMeFav(action_boolean);
@@ -81,17 +81,17 @@ function ReceipeHook(receipe_id, history, setFavs) {
         setFavs(favStorage);
     }
     function addFav() {
-        favStorage.push(receipeStorageObj);
+        favStorage.push(recipeStorageObj);
         _favAction(true);
     }
     function removeFav() {
-        favStorage = favStorage.filter(item => JSON.stringify(item) !== JSON.stringify(receipeStorageObj));
+        favStorage = favStorage.filter(item => JSON.stringify(item) !== JSON.stringify(recipeStorageObj));
         _favAction(false);
     }
 
-    return {modalIsOpen, closeModal, receipe, receipeReady, likesNum, meLike, meFav, addLike, removeLike, addFav, removeFav}
+    return {modalIsOpen, closeModal, recipe, recipeReady, likesNum, meLike, meFav, addLike, removeLike, addFav, removeFav}
 
 }
 
-export default ReceipeHook
+export default useRecipe
 

@@ -7,7 +7,7 @@ function Navbar() {
                     <ul className="navbar-nav ml-auto my-2 my-lg-0">
 						<li className="nav-item"><a className="nav-link js-scroll-trigger" href="#page-top">Szukaj przepisu</a></li>
 						<li className="nav-item"><a className="nav-link js-scroll-trigger" href="#services">Dlaczego wolnowar?</a></li>
-                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#NoIdeaReceipes">Losowe przepisy</a></li>                        
+                        <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#NoIdearecipes">Losowe przepisy</a></li>                        
                         <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#Gallery">Galeria</a></li>
                         <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#Favs">Twoje ulubione</a></li>
                     </ul>
