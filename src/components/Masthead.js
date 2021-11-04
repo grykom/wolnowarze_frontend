@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { Link } from "react-router-dom";
 
 import API_DATA from "./_ApiData";
+import DataFetcher from "./DataFetcher";
 
 const customStyles = {
     content: {
@@ -63,26 +64,28 @@ function Masthead() {
     }
 
     return (
-        <header className="masthead">
+        <header className="masthead" id="Search">
         <div className="container h-100">
             <div className="row h-100 align-items-center justify-content-center text-center">
                 <div className="col-lg-10 align-self-end">
                     <h1 className="text-white font-weight-bold"><span className="icon-wolnowar"></span></h1>
-                    <h1 className="text-uppercase text-white font-weight-bold">wolnowarze.pl</h1>
+                    <h1 className="text-uppercase text-white font-weight-bold">Potrawy z wolnowaru</h1>
                     <hr className="divider my-4" />
                 </div>
                 <div className="col-lg-8 align-self-baseline">
                 <form onSubmit={formPost}>
                     <div className="form-row">
                     <div className="col-12 col-md-9 mb-2 mb-md-0">
-                        <input type="text" required minLength="3" onChange={searchTyping} value={searchValue} className="form-control form-control-lg" placeholder="szukaj potrawę..." />
+                        <input type="text" required minLength="3" onChange={searchTyping} value={searchValue} className="form-control form-control-lg" placeholder="wpisz nazwę dania..." />
                     </div>
                     <div className="col-12 col-md-3">
                         <button type="submit" className="btn btn-block btn-lg btn-primary">Szukaj!</button>
                     </div>
                     </div>
                 </form>    
-                <p class="text-white-75 font-weight-light mt-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
+                <p class="text-white-75 font-weight-light mt-5">
+                    Mamy <DataFetcher url={API_DATA.RECIPES_COUNTER}>{( data, ready ) => ready && data["count"]}</DataFetcher> przepisów na dania z wolnowaru
+                </p>
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="#NoIdearecipes">Nie masz pomysłu?</a>                
                 <p className="text-white-75 font-weight-light mt-5">{searchValue.length < 3 & searchValue.length !== 0 ? "wpisz minimum 3 znaki :)" : ""}</p>
                 </div>

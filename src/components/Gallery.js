@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import DataFetcher from "./DataFetcher";
 import API_DATA from "./_ApiData";
@@ -17,19 +18,24 @@ function GalleryItem({ item }) {
 }
 
 function Gallery(){  
+    const [reload, setReload] = useState(false);
+
     return (  
-        <DataFetcher url={API_DATA.GALLERY}>      
+        <DataFetcher url={API_DATA.GALLERY} refresh={reload}>      
             {( data, ready ) => {                
                 return (
-                    <section id="portfolio">
+                    <section id="Gallery">
                         <div className="container-fluid p-0">
                             <div className="row no-gutters">
-                                {ready ?
+                                {ready &&
                                     data.filter(item => item.images[0]).map((item, idx) => <GalleryItem key={idx} item={item}/>)
-                                    : 
-                                    <h4 className="text-center">Ładowanie galerii...</h4>
                                 }  
                             </div>
+                            <p className="text-center">
+                                <button className="btn btn-sm btn-default" onClick={() => setReload(!reload)}>
+                                        losuj nowe zdjęcia <i className='fas fa-sync ml-1'></i>
+                                </button>
+                            </p>
                         </div>
                     </section>                
                 )

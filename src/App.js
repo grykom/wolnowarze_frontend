@@ -7,6 +7,7 @@ import NoIdeaRecipes from './components/NoIdeaRecipes';
 import Favs from './components/Favs';
 import RecipeModal from './components/RecipeModal';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Footer from './components/Footer';
 
 function App() {
   const [favs, setFavs] = useState(JSON.parse(localStorage.getItem(`favs`)))
@@ -20,6 +21,7 @@ function App() {
         <NoIdeaRecipes />
         <Gallery />
         <Favs favs={favs} />
+        <Footer />
         <Route path="/przepis/:recipe_id/:recipe_slug">
           <RecipeModal setFavs={setFavs} />
         </Route>

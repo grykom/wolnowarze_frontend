@@ -10482,7 +10482,7 @@ header.masthead {
       rgba(92, 77, 66, 0.8) 0%,
       rgba(92, 77, 66, 0.8) 100%
     ),
-    url("../assets/img/bg-masthead.jpg");
+    url("../img/bg-masthead.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -10545,26 +10545,26 @@ header.mastpodstrona h1 {
   }
 }
 
-#portfolio .container-fluid,
-#portfolio .container-sm,
-#portfolio .container-md,
-#portfolio .container-lg,
-#portfolio .container-xl {
+#Gallery .container-fluid,
+#Gallery .container-sm,
+#Gallery .container-md,
+#Gallery .container-lg,
+#Gallery .container-xl {
   max-width: 1920px;
 }
-#portfolio .container-fluid .portfolio-box,
-#portfolio .container-sm .portfolio-box,
-#portfolio .container-md .portfolio-box,
-#portfolio .container-lg .portfolio-box,
-#portfolio .container-xl .portfolio-box {
+#Gallery .container-fluid .portfolio-box,
+#Gallery .container-sm .portfolio-box,
+#Gallery .container-md .portfolio-box,
+#Gallery .container-lg .portfolio-box,
+#Gallery .container-xl .portfolio-box {
   position: relative;
   display: block;
 }
-#portfolio .container-fluid .portfolio-box .portfolio-box-caption,
-#portfolio .container-sm .portfolio-box .portfolio-box-caption,
-#portfolio .container-md .portfolio-box .portfolio-box-caption,
-#portfolio .container-lg .portfolio-box .portfolio-box-caption,
-#portfolio .container-xl .portfolio-box .portfolio-box-caption {
+#Gallery .container-fluid .portfolio-box .portfolio-box-caption,
+#Gallery .container-sm .portfolio-box .portfolio-box-caption,
+#Gallery .container-md .portfolio-box .portfolio-box-caption,
+#Gallery .container-lg .portfolio-box .portfolio-box-caption,
+#Gallery .container-xl .portfolio-box .portfolio-box-caption {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10580,27 +10580,27 @@ header.mastpodstrona h1 {
   transition: opacity 0.25s ease;
   text-align: center;
 }
-#portfolio
+#Gallery
   .container-fluid
   .portfolio-box
   .portfolio-box-caption
   .project-category,
-#portfolio
+#Gallery
   .container-sm
   .portfolio-box
   .portfolio-box-caption
   .project-category,
-#portfolio
+#Gallery
   .container-md
   .portfolio-box
   .portfolio-box-caption
   .project-category,
-#portfolio
+#Gallery
   .container-lg
   .portfolio-box
   .portfolio-box-caption
   .project-category,
-#portfolio
+#Gallery
   .container-xl
   .portfolio-box
   .portfolio-box-caption
@@ -10612,18 +10612,18 @@ header.mastpodstrona h1 {
   font-weight: 600;
   text-transform: uppercase;
 }
-#portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-name,
-#portfolio .container-sm .portfolio-box .portfolio-box-caption .project-name,
-#portfolio .container-md .portfolio-box .portfolio-box-caption .project-name,
-#portfolio .container-lg .portfolio-box .portfolio-box-caption .project-name,
-#portfolio .container-xl .portfolio-box .portfolio-box-caption .project-name {
+#Gallery .container-fluid .portfolio-box .portfolio-box-caption .project-name,
+#Gallery .container-sm .portfolio-box .portfolio-box-caption .project-name,
+#Gallery .container-md .portfolio-box .portfolio-box-caption .project-name,
+#Gallery .container-lg .portfolio-box .portfolio-box-caption .project-name,
+#Gallery .container-xl .portfolio-box .portfolio-box-caption .project-name {
   font-size: 1.2rem;
 }
-#portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption,
-#portfolio .container-sm .portfolio-box:hover .portfolio-box-caption,
-#portfolio .container-md .portfolio-box:hover .portfolio-box-caption,
-#portfolio .container-lg .portfolio-box:hover .portfolio-box-caption,
-#portfolio .container-xl .portfolio-box:hover .portfolio-box-caption {
+#Gallery .container-fluid .portfolio-box:hover .portfolio-box-caption,
+#Gallery .container-sm .portfolio-box:hover .portfolio-box-caption,
+#Gallery .container-md .portfolio-box:hover .portfolio-box-caption,
+#Gallery .container-lg .portfolio-box:hover .portfolio-box-caption,
+#Gallery .container-xl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
 
@@ -10736,4 +10736,10 @@ header.mastpodstrona h1 {
 }
 .w-10 {
   width: 10% !important;
+}
+.crockpot_logo {
+  border: 1px solid gray;
+  border-radius: 15px;
+  display: block;
+  margin: 10px auto;
 }

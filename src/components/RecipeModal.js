@@ -49,7 +49,7 @@ function RecipeModal({ setFavs }) {
                 {recipeReady ?
                     <div className="card h-100">
                         <Carousel autoPlay={false} showStatus={false} showIndicators={false}>
-                            {recipe.images.map((image, idx) => <img key={idx} className="img-fluid img-recipe" src={recipe.images[idx]} alt="{recipe.name}" />)}
+                            {recipe.images.map((image, idx) => <img key={idx} className="img-fluid img-recipe" src={recipe.images[idx]} alt={recipe.name} />)}
                         </Carousel>                    
                         <div className="card-body pt-0 pb-2">
                             <RecipeToPrint recipe={recipe} ref={componentRef} />               

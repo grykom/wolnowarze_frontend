@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Favs({ favs }){
     return (
         <>
-            <section className="page-section" id="contact">
+            <section className="page-section" id="Favs">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-lg-8 text-center">
@@ -13,8 +13,7 @@ function Favs({ favs }){
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-lg-12 ml-auto text-center mb-5 mb-lg-0">
-                            
+                        <div className="col-lg-12 ml-auto text-center mb-5 mb-lg-0">                            
                             <div>
                                 {favs && favs.map((item, idx) => <Link key={idx} className="btn btn-light btn-xl m-1" to={`/przepis/${item.r_id}/${item.r_slug}`}>{item.r_name}</Link>)}
                             </div>
@@ -22,9 +21,6 @@ function Favs({ favs }){
                     </div>
                 </div>
             </section>
-            <footer className="bg-light py-5">
-                <div className="container"><div className="small text-center text-muted">Copyright © 2022 - <a href="https://github.com/grykom">grykom</a>, Start Bootstrap</div></div>
-            </footer>
         </>
     )
 }
