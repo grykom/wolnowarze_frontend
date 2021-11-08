@@ -9,7 +9,7 @@ function Favs({ favs }){
                         <div className="col-lg-8 text-center">
                             <h2 className="mt-0">Twoje ulubione przepisy</h2>
                             <hr className="divider my-4" />
-                            <p className="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                            <p className="text-muted mb-5">Poniżej znajdziesz listę potraw które zostały przez Ciebie dodane do ulubionych. Smacznego!</p>
                         </div>
                     </div>
                     <div className="row">

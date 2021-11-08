@@ -8,7 +8,7 @@ function WhySlowcooker(){
                 return (
                     <section className="page-section" id="WhySlowcooker">
                         <div className="container">
-                            <h2 className="text-center mt-0">Dlaczego wolnowar?</h2>
+                            <h2 className="text-center mt-0">Zalety wolnowaru</h2>
                             <hr className="divider my-4" />
                             <div className="row">
                                 {ready ?

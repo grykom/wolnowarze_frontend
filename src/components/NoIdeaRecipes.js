@@ -17,7 +17,7 @@ function NoIdearecipes(){
                                 <div className="col-lg-8 text-center">
                                     <h2 className="text-white mt-0">Nie masz pomysłu?</h2>
                                     <hr className="divider light my-4" />
-                                    <p className="text-white-50 mb-4">Spóbuj poniższych przepisów!</p>
+                                    <p className="text-white-50 mb-4">Spóbuj poniższych przepisów na potrawy</p>
                                     { ready &&
                                         data.map((item, idx) => <Link key={idx} className="btn btn-light btn-xl m-1" to={`/przepis/${item.recipe_id}/${item.slug}`}>{item.name}</Link>)
                                     }   
