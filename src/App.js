@@ -22,7 +22,7 @@ function App() {
         <Gallery />
         <Favs favs={favs} />
         <Footer />
-        <Route path="/przepis/:recipe_id/:recipe_slug">
+        <Route path="/:recipe_id-:recipe_slug">
           <RecipeModal setFavs={setFavs} />
         </Route>
       </Router>

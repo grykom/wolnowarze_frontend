@@ -7,7 +7,7 @@ import API_DATA from "./_ApiData";
 function GalleryItem({ item }) {
     return (
         <div className="col-lg-4 col-sm-6">
-            <Link className="portfolio-box" to={`/przepis/${item.recipe_id}/${item.slug}`}>
+            <Link className="portfolio-box" to={`/${item.recipe_id}-${item.slug}`}>
                 <img className="img-fluid img-cover" src={item.images[0]} alt="" />
                 <div className="portfolio-box-caption">
                     <div className="project-name">{item.name}</div>

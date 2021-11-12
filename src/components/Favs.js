@@ -15,7 +15,7 @@ function Favs({ favs }){
                     <div className="row">
                         <div className="col-lg-12 ml-auto text-center mb-5 mb-lg-0">                            
                             <div>
-                                {favs && favs.map((item, idx) => <Link key={idx} className="btn btn-light btn-xl m-1" to={`/przepis/${item.r_id}/${item.r_slug}`}>{item.r_name}</Link>)}
+                                {favs && favs.map((item, idx) => <Link key={idx} className="btn btn-light btn-xl m-1" to={`/${item.r_id}-${item.r_slug}`}>{item.r_name}</Link>)}
                             </div>
                         </div>
                     </div>

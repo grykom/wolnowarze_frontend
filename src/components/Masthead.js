@@ -21,14 +21,14 @@ function SingleItem({ item }) {
     <div className="card h-100 mb-4">
         <img className="img-fluid img-search" src={item.images[0]} alt="" />
         <div className="card-body">
-            <h4 className="card-title text-primary"><Link to={`/przepis/${item.recipe_id}/${item.slug}`}>{item.name}</Link></h4>
+            <h4 className="card-title text-primary"><Link to={`/${item.recipe_id}-${item.slug}`}>{item.name}</Link></h4>
             <div className="row">
                 <p className="card-text col-12 col-lg-6"><i className="fas text-primary fa-users mr-1"></i> Liczba porcji: {item.serving_size}</p>
                 <p className="card-text col-12 col-lg-6 text-right"><i className="far text-primary fa-clock mr-1"></i>Czas przygotowania: {item.preparing_time}</p>
             </div>
         </div>
         <div className="card-footer">
-            <Link to={`/przepis/${item.recipe_id}/${item.slug}`} className="btn btn-primary">Zobacz przepis</Link>
+            <Link to={`/${item.recipe_id}-${item.slug}`} className="btn btn-primary">Zobacz przepis</Link>
         </div>
     </div>
     )
